@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Personas</h1>
+        <% if (persons.length === 0) { %>
+            <div class="alert alert-warning" role="alert">
+                No hay personas que cumplan con el criterio de edad.
+            </div>
+        <% } else { %>
+            <ul class="list-group">
+                <% persons.forEach(person => { %>
+                    <li class="list-group-item">
+                        <strong>Nombre:</strong> <%= person.name %><br>
+                        <strong>Fecha de Nacimiento:</strong> <%= person.birthDate %><br>
+                        <strong>Edad en Días:</strong> <%= moment().diff(moment(person.birthDate), 'days') %>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+        
+        <!-- Botón de Consultar -->
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" onclick="window.location.reload()">Consultar</button>
+        </div>
+    </div>
+
+    <!-- Incluir Bootstrap JS y dependencias (opcional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
